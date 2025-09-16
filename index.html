@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Gym</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d121c;
+            color: #f8fafc;
+        }
+
+        /* Parallax effect for the hero section background */
+        .parallax-hero {
+            background-image: url('https://placehold.co/1920x1080/1a202c/e2e8f0?text=POWERHOUSE+GYM');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Fade-in and slide-up animation for sections */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Pulsating glow animation */
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 16px 8px rgba(249, 115, 22, 0);
+            }
+        }
+        .pulse-glow {
+            animation: pulse-glow 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+
+        /* Hover effect for cards */
+        .card-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-gray-950/80 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-extrabold text-orange-400">Powerhouse Gym</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-300 hover:text-white transition duration-300">About</a>
+                <a href="#features" class="text-gray-300 hover:text-white transition duration-300">Features</a>
+                <a href="#pricing" class="text-gray-300 hover:text-white transition duration-300">Pricing</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition duration-300">Contact</a>
+            </div>
+            <button id="menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-950/90">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">About</a>
+                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Features</a>
+                <a href="#pricing" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Pricing</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Parallax -->
+    <section class="parallax-hero h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white relative">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="relative z-10 px-6">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-pulse">Unleash Your Potential</h1>
+            <p class="text-lg md:text-2xl font-light mb-8">Join Powerhouse Gym and start your journey to a stronger, healthier you.</p>
+            <a href="#pricing" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 pulse-glow">Join Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-24 fade-in-section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">Who We Are</h2>
+            <div class="md:flex md:items-center">
+                <div class="md:w-1/2 md:pr-10 mb-8 md:mb-0">
+                    <img src="images.jpg" alt="Gym Image">
+
+                </div>
+                <div class="md:w-1/2">
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Powerhouse Gym is more than just a place to work out. We are a community dedicated to helping you achieve your fitness goals. With state-of-the-art equipment, expert trainers, and a supportive environment, we provide everything you need to succeed.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Our facilities are designed to cater to all fitness levels, from beginners to professional athletes. We believe that fitness is a personal journey, and we're here to guide you every step of the way.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="bg-gray-900 py-16 md:py-24 fade-in-section">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12">Our Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-800 rounded-xl p-8 shadow-xl transition duration-300 card-hover">
+                    <div class="flex justify-center mb-4">
+                        <svg class="w-12 h-12 text-orange-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Modern Equipment</h3>
+                    <p class="text-gray-400">Access to a wide range of state-of-the-art machines and free weights.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-gray-800 rounded-xl p-8 shadow-xl transition duration-300 card-hover">
+                    <div class="flex justify-center mb-4">
+                        <svg class="w-12 h-12 text-orange-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Certified Trainers</h3>
+                    <p class="text-gray-400">Personalized training plans and professional guidance from our certified coaches.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-gray-800 rounded-xl p-8 shadow-xl transition duration-300 card-hover">
+                    <div class="flex justify-center mb-4">
+                        <svg class="w-12 h-12 text-orange-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Group Classes</h3>
+                    <p class="text-gray-400">Join our fun and motivating group classes, from yoga to HIIT.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 md:py-24 fade-in-section">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12">Membership Plans</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Plan 1: Basic -->
+                <div class="bg-gray-800 rounded-xl p-8 shadow-2xl transition duration-300 card-hover border-2 border-transparent hover:border-orange-500">
+                    <h3 class="text-2xl font-bold text-orange-400 mb-4">Basic</h3>
+                    <p class="text-4xl font-extrabold text-white mb-2">1500rs<span class="text-lg font-normal text-gray-400">/month</span></p>
+                    <p class="text-gray-400 mb-6">Perfect for solo lifters.</p>
+                    <ul class="text-gray-300 space-y-2 text-left mb-8">
+                        <li><span class="text-orange-400 font-bold">✓</span> Full gym access</li>
+                        <li><span class="text-orange-400 font-bold">✓</span> Free weights area</li>
+                        <li><span class="text-orange-400 font-bold">✓</span> Cardio equipment</li>
+                        <li><span class="text-gray-500 font-bold">✖</span> Group classes</li>
+                        <li><span class="text-gray-500 font-bold">✖</span> Personal trainer</li>
+                    </ul>
+                    <a href="#" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">Choose Plan</a>
+                </div>
+                <!-- Plan 2: Pro -->
+                <div class="bg-gray-800 rounded-xl p-8 shadow-2xl transition duration-300 card-hover border-2 border-transparent hover:border-orange-500">
+                    <h3 class="text-2xl font-bold text-orange-400 mb-4">Pro</h3>
+                    <p class="text-4xl font-extrabold text-white mb-2">3000rs<span class="text-lg font-normal text-gray-400">/month</span></p>
+                    <p class="text-gray-400 mb-6">Our most popular choice.</p>
+                    <ul class="text-gray-300 space-y-2 text-left mb-8">
+                        <li><span class="text-orange-400 font-bold">✓</span> Everything in Basic</li>
+                        <li><span class="text-orange-400 font-bold">✓</span> Unlimited group classes</li>
+                        <li><span class="text-orange-400 font-bold">✓</span> One free training session</li>
+                        <li><span class="text-orange-400 font-bold">✓</span> Sauna access</li>
+                        <li><span class="text-gray-500 font-bold">✖</span> Personal trainer</li>
+                    </ul>
+                    <a href="#" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">Choose Plan</a>
+                </div>
+                <!-- Plan 3: Elite -->
+                <div class="bg-gray-800 rounded-xl p-8 shadow-2xl transition duration-300 card-hover border-2 border-transparent hover:border-orange-500">
+                    <h3 class="text-2xl font-bold text-orange-400 mb-4">Elite</h3>
+                    <p class="text-4xl font-extrabold text-white mb-2">7000rs<span class="text-lg font-normal text-gray-400">/month</span></p>
+                    <p class="text-gray-400 mb-6">The ultimate fitness package.</p>
+                    <ul class="text-gray-300 space-y-2 text-left mb-8">
+                        <li><span class="text-orange-400 font-bold">✓</span> Everything in Pro</li>
+                        <li><span class="text-orange-400 font-bold">✓</span> Weekly personal training</li>
+                        <li><span class="text-orange-400 font-bold">✓</span> Custom nutrition plan</li>
+                        <li><span class="text-orange-400 font-bold">✓</span> Priority class booking</li>
+                        <li><span class="text-orange-400 font-bold">✓</span> 24/7 gym access</li>
+                    </ul>
+                    <a href="#" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">Choose Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-900 py-16 md:py-24 fade-in-section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12">Contact Us</h2>
+            <div class="max-w-xl mx-auto">
+                <form class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-400">Name</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-3 rounded-md bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition duration-200">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-400">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-3 rounded-md bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition duration-200">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-400">Message</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 rounded-md bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition duration-200"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-md shadow-lg transition duration-300 transform hover:scale-105">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center">
+        <p>&copy; 2024 Powerhouse Gym. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.getElementById('mobile-menu').classList.add('hidden');
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Mobile menu toggle
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Intersection Observer for fade-in animations
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
